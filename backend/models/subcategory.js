@@ -1,25 +1,19 @@
 const mongoose = require('mongoose');
 
-const categorySchema = mongoose.Schema({
+const subCategorySchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
     },
     description: {
         type: String,
         default: '',
-        max_length: 500,
+        maxlength: 500,
     },
-    icon: {
-        type: String,
-    },
-    color: {
-        type: String,
-    },
-    image: {
-        type: String,
-        default: '',
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',  // Reference to Category model
+        required: true
     },
     isActive: {
         type: Boolean,
@@ -31,9 +25,8 @@ const categorySchema = mongoose.Schema({
     },
     dateCreated: {
         type: Date,
-        default: Date.now(),
-    }
-
+        default: Date.now,
+    },
 });
 
-exports.Category = mongoose.model('Category', categorySchema);
+exports.SubCategory = mongoose.model('SubCategory', subCategorySchema);

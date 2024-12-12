@@ -16,17 +16,21 @@ app.use(morgan('tiny'));
 
 //Routers
 const categoriesRoutes = require('./routers/categories');
+const subcategoriesRoutes = require('./routers/subcategories');
 const productsRoutes = require('./routers/products');
 const usersRoutes = require('./routers/users');
 const ordersRoutes = require('./routers/orders');
+const certificatesRoutes = require ('./routers/certificates');
 
 const api = process.env.API_URL;
 
 //Routers
 app.use(`${api}/categories`, categoriesRoutes);
+app.use(`${api}/subcategories`, subcategoriesRoutes);
 app.use(`${api}/products`, productsRoutes);
 app.use(`${api}/users`, usersRoutes);
 app.use(`${api}/orders`, ordersRoutes);
+app.use(`${api}/certificates`, certificatesRoutes);
 
 mongoose.connect(process.env.CONNECTION_STRING, {
     dbName: 'Ben_Chiekh_Optic'
