@@ -31,7 +31,7 @@ const productSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    subCategory: {
+    subcategory: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'SubCategory',  // Reference to SubCategory model
         required: true,
@@ -75,5 +75,12 @@ const productSchema = mongoose.Schema({
     },
 })
 
+productSchema.virtual('id').get(function () {
+    return this._id.toHexString();
+});;
+
+productSchema.set('toJSON', {
+    virtuals: true,
+});
 exports.Product = mongoose.model('Product', productSchema);
 

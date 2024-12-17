@@ -8,7 +8,7 @@ const subCategorySchema = mongoose.Schema({
     description: {
         type: String,
         default: '',
-        maxlength: 500,
+        max_length: 500,
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
